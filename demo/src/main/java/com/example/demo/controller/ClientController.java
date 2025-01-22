@@ -17,8 +17,10 @@ public class ClientController {
     private final ClientService clientService;
 
     /**
+     * Retrieves a list of all clients from the system.
+     * This endpoint is accessible via a GET request.
      *
-     * @return
+     * @return A list of all clients in the system.
      */
     @GetMapping("all")
     @ResponseStatus(HttpStatus.OK)
@@ -26,6 +28,14 @@ public class ClientController {
         return clientService.getAllCustomers();
     }
 
+    /**
+     * Inserts a new client into the system.
+     * This endpoint is accessible via a POST request with the client details in the request body.
+     * The client object is validated before insertion.
+     *
+     * @param client The client to be inserted into the system.
+     * @return The newly created client object.
+     */
     @PostMapping("new")
     @ResponseStatus(HttpStatus.CREATED)
     public Client insertCustomer(@Valid @RequestBody Client client) {
